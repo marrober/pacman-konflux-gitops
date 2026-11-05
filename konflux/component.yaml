@@ -1,0 +1,39 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: pacman
+  namespace: pacman-konflux
+  annotations:
+    # Creates a PR with .tekton PipelineRuns if they are missing.
+    # Use configure-pac-no-mr if you already manage .tekton/ in git (this repo).
+    build.appstudio.openshift.io/request: configure-pac-no-mr
+    build.appstudio.openshift.io/pipeline: '{"name":"docker-build","bundle":"latest"}'
+    git-provider: github
+    git-provider-url: https://github.com
+spec:
+  application: pacman
+  componentName: pacman
+  source:
+    git:
+      url: https://github.com/marrober/pacman-konflux.git
+      revision: main
+      context: ./src
+      dockerfileUrl: dockerfile
+  # Optional when ImageRepository / image-controller manages the push target.
+  # Replace <tenant> with your Konflux tenant namespace if you set this explicitly.
+  # containerImage: quay.io/redhat-user-workloads/pacman-konflux/pacman/pacman
+---
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: ImageRepository
+metadata:
+  name: pacman
+  namespace: pacman-konflux
+  annotations:
+    image-controller.appstudio.redhat.com/update-component-image: "true"
+  labels:
+    appstudio.redhat.com/application: pacman
+    appstudio.redhat.com/component: pacman
+spec:
+  image:
+    name: pacman-konflux/pacman
+    visibility: public

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pacman-konflux-dev
+  labels:
+    app.kubernetes.io/part-of: pacman
+    app.kubernetes.io/environment: dev
