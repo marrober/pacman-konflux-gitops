@@ -4,5 +4,5 @@ metadata:
   name: pacman
   namespace: pacman-konflux-ci
 spec:
-  displayName: Pacman
+  displayName: pacman
   description: Pac-Man Node.js game built with Konflux
