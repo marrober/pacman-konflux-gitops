@@ -35,5 +35,4 @@ metadata:
     appstudio.redhat.com/component: pacman
 spec:
   image:
-    name: pacman-konflux/pacman
     visibility: public

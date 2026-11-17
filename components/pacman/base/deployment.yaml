@@ -20,7 +20,7 @@ spec:
       containers:
       - name: pacman
         # Image digest/tag is set via Kustomize images in the overlay.
-        image: quay.io/redhat-user-workloads/pacman-konflux/pacman/pacman
+        image: quay.io/konfluxmr/pacman-konflux-ci/pacman/pacman
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
