@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: pacman
     app.kubernetes.io/environment: dev
 spec:
-  project: default
+  project: pacman-konflux
   source:
     repoURL: https://github.com/marrober/pacman-konflux-gitops.git
     targetRevision: main
